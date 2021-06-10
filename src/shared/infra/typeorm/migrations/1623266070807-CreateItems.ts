@@ -24,6 +24,11 @@ export default class CreateItems1623266070807 implements MigrationInterface {
             isNullable: false,
           },
           {
+            name: 'price',
+            type: 'float',
+            isNullable: false,
+          },
+          {
             name: 'created_at',
             type: 'timestamp with time zone',
             isNullable: false,
