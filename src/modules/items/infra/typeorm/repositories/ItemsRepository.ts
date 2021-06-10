@@ -33,6 +33,7 @@ class ItemsRepository implements IItemsRepository {
       name,
       description,
       price,
+      updated_at: new Date(),
     });
 
     return updated;

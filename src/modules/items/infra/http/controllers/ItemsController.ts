@@ -5,7 +5,7 @@ import UpdateItemService from '../../../services/UpdateItemService';
 import ItemsRepository from '../../typeorm/repositories/ItemsRepository';
 
 class ItemsController {
-  public async store(request: Request, response: Response) {
+  public async create(request: Request, response: Response) {
     const itemsRepository = new ItemsRepository();
     const { name, description, price } = request.body;
     const createItem = new CreateItemService(itemsRepository);
