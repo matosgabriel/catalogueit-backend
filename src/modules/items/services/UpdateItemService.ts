@@ -16,7 +16,7 @@ class UpdateItemService {
     const item = await this.itemsRepository.findById(item_id);
 
     if (!item) {
-      throw new Error('Item with this id did not exists!');
+      throw new Error('Not found an item with this id!');
     }
 
     const updatedItem = await this.itemsRepository.update(data);
