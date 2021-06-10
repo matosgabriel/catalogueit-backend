@@ -1,3 +1,4 @@
+import { validate } from 'uuid';
 import Item from '../infra/typeorm/entities/Item';
 import IItemsRepository from '../repositories/IItemsRepository';
 
@@ -13,6 +14,12 @@ class UpdateItemService {
 
   public async execute(data: IRequest): Promise<Item> {
     const { item_id } = data;
+    const isUuid = validate(item_id);
+
+    if (!isUuid) {
+      throw new Error('Invalid id!');
+    }
+
     const item = await this.itemsRepository.findById(item_id);
 
     if (!item) {
