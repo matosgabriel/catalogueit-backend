@@ -1,3 +1,4 @@
+import { inject, injectable } from 'tsyringe';
 import { validate } from 'uuid';
 import Item from '../infra/typeorm/entities/Item';
 import IItemsRepository from '../repositories/IItemsRepository';
@@ -9,8 +10,12 @@ interface IRequest {
   price: number;
 }
 
+@injectable()
 class UpdateItemService {
-  constructor(private itemsRepository: IItemsRepository) {}
+  constructor(
+    @inject('ItemsRepository')
+    private itemsRepository: IItemsRepository,
+  ) {}
 
   public async execute(data: IRequest): Promise<Item> {
     const { item_id } = data;

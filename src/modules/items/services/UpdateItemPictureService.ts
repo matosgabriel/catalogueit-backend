@@ -1,3 +1,5 @@
+import { injectable, inject } from 'tsyringe';
+
 import IStorageProvider from '../../../shared/container/providers/StorageProvider/models/IStorageProvider';
 import Item from '../infra/typeorm/entities/Item';
 import IItemsRepository from '../repositories/IItemsRepository';
@@ -7,9 +9,13 @@ interface IRequest {
   filename: string;
 }
 
+@injectable()
 class UpdateItemPictureService {
   constructor(
+    @inject('ItemsRepository')
     private itemsRepository: IItemsRepository,
+
+    @inject('StorageProvider')
     private storageProvider: IStorageProvider,
   ) {}
 

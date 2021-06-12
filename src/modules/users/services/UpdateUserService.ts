@@ -1,4 +1,5 @@
 import { compare, hash } from 'bcryptjs';
+import { inject, injectable } from 'tsyringe';
 import User from '../infra/typeorm/entities/User';
 import IUsersRepository from '../repositories/IUsersRepository';
 
@@ -10,8 +11,12 @@ interface IRequest {
   old_password: string;
 }
 
+@injectable()
 class UpdateUserService {
-  constructor(private usersRepository: IUsersRepository) {}
+  constructor(
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
+  ) {}
 
   public async execute(data: IRequest): Promise<User> {
     const { id, old_password, login, name, new_password } = data;
