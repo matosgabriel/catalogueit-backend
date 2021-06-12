@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 import CreateItemService from '../../../services/CreateItemService';
 import UpdateItemService from '../../../services/UpdateItemService';
@@ -38,7 +39,7 @@ class ItemsController {
       price,
     });
 
-    return response.json(updatedItem);
+    return response.json(classToClass(updatedItem));
   }
 }
 

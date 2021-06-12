@@ -1,5 +1,6 @@
 import { container } from 'tsyringe';
 import { Request, Response } from 'express';
+import { classToClass } from 'class-transformer';
 
 import UpdateItemPictureService from '../../../services/UpdateItemPictureService';
 
@@ -19,7 +20,7 @@ class ItemsPictureController {
       item_id: id,
     });
 
-    return response.json(updatedItem);
+    return response.json(classToClass(updatedItem));
   }
 }
 

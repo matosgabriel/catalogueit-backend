@@ -1,4 +1,4 @@
 export default {
-  secret: 'catalogueit',
+  secret: process.env.APP_SECRET,
   expiresIn: '1d',
 };

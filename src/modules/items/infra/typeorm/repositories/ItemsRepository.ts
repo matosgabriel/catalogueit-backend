@@ -28,6 +28,7 @@ class ItemsRepository implements IItemsRepository {
 
   public async update(data: IUpdateItemDTO): Promise<Item> {
     const { item_id, name, description, price } = data;
+
     const updated = await this.ormRepository.save({
       id: item_id,
       name,
