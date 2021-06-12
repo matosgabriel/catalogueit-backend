@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('items')
 class Item {
@@ -14,10 +20,13 @@ class Item {
   @Column()
   price: number;
 
-  @Column('timestamp with time zone')
+  @Column()
+  picture: string;
+
+  @CreateDateColumn()
   created_at: Date;
 
-  @Column('timestamp with time zone')
+  @UpdateDateColumn()
   updated_at: Date;
 }
 

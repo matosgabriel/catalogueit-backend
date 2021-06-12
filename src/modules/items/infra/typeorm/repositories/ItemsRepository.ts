@@ -20,10 +20,10 @@ class ItemsRepository implements IItemsRepository {
     return newItem;
   }
 
-  public async findByName(name: string): Promise<Item[] | null> {
-    const findItems = await this.ormRepository.find({ where: { name } });
+  public async findByName(name: string): Promise<Item | null> {
+    const findItems = await this.ormRepository.findOne({ where: { name } });
 
-    return findItems;
+    return findItems || null;
   }
 
   public async update(data: IUpdateItemDTO): Promise<Item> {
@@ -43,6 +43,11 @@ class ItemsRepository implements IItemsRepository {
     const item = await this.ormRepository.findOne({ where: { id: item_id } });
 
     return item || null;
+  }
+
+  public async save(item: Item): Promise<Item> {
+    const savedItem = await this.ormRepository.save(item);
+    return savedItem;
   }
 }
 

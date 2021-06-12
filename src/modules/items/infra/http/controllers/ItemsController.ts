@@ -10,7 +10,11 @@ class ItemsController {
     const { name, description, price } = request.body;
     const createItem = new CreateItemService(itemsRepository);
 
-    const newItem = await createItem.execute({ name, description, price });
+    const newItem = await createItem.execute({
+      name,
+      description,
+      price,
+    });
 
     return response.json(newItem);
   }

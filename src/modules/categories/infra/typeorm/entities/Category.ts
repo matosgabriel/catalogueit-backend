@@ -5,22 +5,14 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Exclude } from 'class-transformer';
 
-@Entity('users')
-class User {
+@Entity('categories')
+class Category {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
   name: string;
-
-  @Column()
-  login: string;
-
-  @Exclude()
-  @Column()
-  password: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -29,4 +21,4 @@ class User {
   updated_at: Date;
 }
 
-export default User;
+export default Category;
