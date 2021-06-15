@@ -4,10 +4,13 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
 import { Expose } from 'class-transformer';
 import uploadConfig from '../../../../../config/upload';
+import Category from '../../../../categories/infra/typeorm/entities/Category';
 
 const { Bucket, region } = uploadConfig.config.s3;
 
@@ -27,6 +30,13 @@ class Item {
 
   @Column()
   picture: string;
+
+  @Column()
+  category_id: string;
+
+  @ManyToOne(() => Category, category => category.items)
+  @JoinColumn({ name: 'category_id' })
+  category: Category;
 
   @CreateDateColumn()
   created_at: Date;

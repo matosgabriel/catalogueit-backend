@@ -6,6 +6,7 @@ interface IRequest {
   name: string;
   description: string;
   price: number;
+  category_id: string;
 }
 
 @injectable()

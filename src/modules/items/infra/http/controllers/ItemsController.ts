@@ -12,13 +12,14 @@ interface IQuery {
 
 class ItemsController {
   public async create(request: Request, response: Response) {
-    const { name, description, price } = request.body;
+    const { name, description, price, category_id } = request.body;
     const createItem = container.resolve(CreateItemService);
 
     const newItem = await createItem.execute({
       name,
       description,
       price,
+      category_id,
     });
 
     return response.json(newItem);
@@ -28,7 +29,7 @@ class ItemsController {
     const itemsRepository = new ItemsRepository();
     const { id } = request.query as unknown as IQuery;
 
-    const { name, description, price } = request.body;
+    const { name, description, price, category_id } = request.body;
 
     const updateItem = new UpdateItemService(itemsRepository);
 
@@ -37,6 +38,7 @@ class ItemsController {
       name,
       description,
       price,
+      category_id,
     });
 
     return response.json(classToClass(updatedItem));

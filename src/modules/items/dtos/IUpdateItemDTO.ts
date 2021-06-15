@@ -3,4 +3,5 @@ export default interface IUpdateItemDTO {
   name: string;
   description: string;
   price: number;
+  category_id: string;
 }
