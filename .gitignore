@@ -9,3 +9,4 @@ ormconfig.json
 
 tmp/uploads/*
 !tmp/uploads/.gitkeep
+yarn-error.log
